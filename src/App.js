@@ -17,6 +17,18 @@ function App() {
 		console.log('Models Loaded');
 		await recognizer.ensureModelLoaded();
 		console.log(recognizer.wordLabels());
+		setModel(recognizer);
+		setLabel(recognizer.wordLabels());
+	};
+
+	const recognizeCommands = async () => {
+		console.log('listening to commands');
+		model.listen(
+			(result) => {
+				console.log(result.scores);
+			},
+			{ includeSpectogram: true, probabilityThreshold: 0.9 }
+		);
 	};
 
 	React.useEffect(() => {
@@ -26,6 +38,9 @@ function App() {
 	return (
 		<React.Fragment>
 			<div className='app-header'>Niki Commands</div>
+			<section>
+				<button onClick={recognizeCommands}>Listen</button>
+			</section>
 		</React.Fragment>
 	);
 }

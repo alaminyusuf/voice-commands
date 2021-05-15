@@ -12,6 +12,17 @@ function App() {
 	const [action, setAction] = React.useState(null);
 	const [label, setLabel] = React.useState(null);
 
+	const loadModel = async () => {
+		const recognizer = await speech.create('BROWSER_FFT');
+		console.log('Models Loaded');
+		await recognizer.ensureModelLoaded();
+		console.log(recognizer.wordLabels());
+	};
+
+	React.useEffect(() => {
+		loadModel();
+	}, []);
+
 	return (
 		<React.Fragment>
 			<div className='app-header'>Niki Commands</div>

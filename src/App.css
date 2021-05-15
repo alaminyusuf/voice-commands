@@ -1,8 +1,20 @@
 body {
 	background-color: #333;
-	color: #000;
+	color: #f4f4f4;
 }
 .app-header {
 	font-size: 24px;
 	padding: 1em;
+}
+
+section {
+	text-align: center;
+	margin: 2em 0;
+}
+
+button {
+	padding: 1em 3em;
+	background-color: #333;
+	outline: none;
+	color: #f4f4f4;
 }
